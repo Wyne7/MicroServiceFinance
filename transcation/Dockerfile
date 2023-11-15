@@ -1,9 +1,7 @@
-# First stage: Maven build
-FROM maven:3.8.4-openjdk-17 AS build
-COPY src /usr/src/app/src
-COPY pom.xml /usr/src/app
-RUN mvn -f /usr/src/app/pom.xml clean package
-# Second stage: JRE and run application
+# Start from a base image with JDK
 FROM openjdk:17-jdk-slim
-COPY --from=build /usr/src/app/target/*.jar app.jar
+# Copy the pre-built jar file into the container
+COPY target/*.jar app.jar
+# Command to run the application
+RUN mkdir log
 ENTRYPOINT ["java","-jar","/app.jar"]
