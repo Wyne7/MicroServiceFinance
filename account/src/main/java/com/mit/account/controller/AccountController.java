@@ -21,7 +21,10 @@ public class AccountController {
 	AccountServiceInterface accountServiceInterface;
 	@PostMapping(value = "/save")
 	public void saveOrder(@RequestBody RequestDTO dto) {
-		InfoLogService.log("Controller");
-		accountServiceInterface.saveAccount(dto);
+	
+
+			InfoLogService.log("Controller");
+			accountServiceInterface.saveAccount(dto);
+
 	}
 }

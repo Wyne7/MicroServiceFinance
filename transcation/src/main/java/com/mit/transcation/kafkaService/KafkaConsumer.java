@@ -27,7 +27,7 @@ public class KafkaConsumer {
 	public void consumeOrderEvent(String message) {
 
 		try {
-			InfoLogService.log("After Kafka");
+			InfoLogService.log("Listener on thread " + Thread.currentThread().getId());
 			ObjectMapper objectMapper = new ObjectMapper();
 			AccountDTO requestDTO = objectMapper.readValue(message, AccountDTO.class);
 			accountTranscatioinServiceInterface.saveAccountTranscation(requestDTO);

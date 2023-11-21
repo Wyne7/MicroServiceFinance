@@ -4,95 +4,107 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "AccountTransaction")
+@Table(name = "account_transaction") // Note: Changed to lowercase for PostgreSQL conventions
 public class AccountTransactionEntity extends Util {
 
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = -8934715989172113691L;
+	private static final long serialVersionUID = 1L;
 
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "TransNo", nullable = false)
-	private Integer transNo;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "sys_key", nullable = false)
+    private Integer sysKey;
 
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "TransRef", nullable = false)
-	private Integer transRef;
+    @Column(name = "trans_no", nullable = false)
+    private Integer transNo;
 
-	@Column(name = "BranchCode", length = 50, nullable = false)
-	private String branchCode;
+    @Column(name = "trans_ref", nullable = false)
+    private Integer transRef;
 
-	@Column(name = "WorkStation", length = 50, nullable = false)
-	private String workStation;
+    @Column(name = "branch_code", length = 50, nullable = false)
+    private String branchCode;
 
-	@Column(name = "SerialNo", nullable = false)
-	private Integer serialNo;
+    @Column(name = "work_station", length = 50, nullable = false)
+    private String workStation;
 
-	@Column(name = "TellerId", length = 50, nullable = false)
-	private String tellerId;
+    @Column(name = "serial_no", nullable = false)
+    private Integer serialNo;
 
-	@Column(name = "SupervisorId", length = 50, nullable = false)
-	private String supervisorId;
+    @Column(name = "teller_id", length = 50, nullable = false)
+    private String tellerId;
 
-	@Column(name = "TransTime", nullable = false)
-	private String transTime;
+    @Column(name = "supervisor_id", length = 50, nullable = false)
+    private String supervisorId;
 
-	@Column(name = "TransDate", nullable = false)
-	private String transDate;
+    @Column(name = "trans_time", nullable = false)
+    private String transTime;
 
-	@Column(name = "Description", length = 255, nullable = false)
-	private String description;
+    @Column(name = "trans_date", nullable = false)
+    private String transDate;
 
-	@Column(name = "ChequeNo", length = 50, nullable = false)
-	private String chequeNo;
+    @Column(name = "description", length = 255, nullable = false)
+    private String description;
 
-	@Column(name = "CurrencyCode", length = 20, nullable = false)
-	private String currencyCode;
+    @Column(name = "cheque_no", length = 50, nullable = false)
+    private String chequeNo;
 
-	@Column(name = "CurrencyRate", nullable = false)
-	private Float currencyRate;
+    @Column(name = "currency_code", length = 20, nullable = false)
+    private String currencyCode;
 
-	@Column(name = "Amount", nullable = false)
-	private Double amount;
+    @Column(name = "currency_rate", nullable = false)
+    private Float currencyRate;
 
-	@Column(name = "TransType", nullable = false)
-	private Integer transType;
+    @Column(name = "amount", nullable = false)
+    private Double amount;
 
-	@Column(name = "AccNumber", length = 50, nullable = false)
-	private String accNumber;
+    @Column(name = "trans_type", nullable = false)
+    private Integer transType;
 
-	@Column(name = "PrevBalance", nullable = false)
-	private Double prevBalance;
+    @Column(name = "acc_number", length = 50, nullable = false)
+    private String accNumber;
 
-	@Column(name = "PrevUpDate")
-	private String prevUpDate;
+    @Column(name = "prev_balance", nullable = false)
+    private Double prevBalance;
 
-	@Column(name = "EffectiveDate", nullable = false)
-	private String effectiveDate;
+    @Column(name = "prev_up_date")
+    private String prevUpDate;
 
-	@Column(name = "ContraDate")
-	private String contraDate;
+    @Column(name = "effective_date", nullable = false)
+    private String effectiveDate;
 
-	@Column(name = "Status", nullable = false)
-	private Integer status;
+    @Column(name = "contra_date")
+    private String contraDate;
 
-	@Column(name = "AccRef", length = 16, nullable = false)
-	private String accRef;
+    @Column(name = "status", nullable = false)
+    private Integer status;
 
-	@Column(name = "remark", columnDefinition = "nvarchar(max)")
-	private String remark;
+    @Column(name = "acc_ref", length = 16, nullable = false)
+    private String accRef;
 
-	@Column(name = "SystemCode", nullable = false)
-	private Integer systemCode;
+    @Column(name = "remark", columnDefinition = "text")
+    private String remark;
 
-	@Column(name = "SubRef", length = 50, nullable = false)
-	private String subRef;
+    @Column(name = "system_code", nullable = false)
+    private Integer systemCode;
+
+    @Column(name = "sub_ref", length = 50, nullable = false)
+    private String subRef;
+
+	public Integer getSysKey() {
+		return sysKey;
+	}
+
+	public void setSysKey(Integer sysKey) {
+		this.sysKey = sysKey;
+	}
 
 	public Integer getTransNo() {
 		return transNo;
@@ -206,8 +218,6 @@ public class AccountTransactionEntity extends Util {
 		this.amount = amount;
 	}
 
-	
-
 	public Integer getTransType() {
 		return transType;
 	}
@@ -295,8 +305,6 @@ public class AccountTransactionEntity extends Util {
 	public void setSubRef(String subRef) {
 		this.subRef = subRef;
 	}
-	
-	
-
-	
+    
+    
 }

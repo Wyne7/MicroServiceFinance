@@ -17,6 +17,6 @@ public class Util implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SysKey", nullable = false)
-    private Integer sysKey;
+    private Long   sysKey;
 	
 }

@@ -3,6 +3,7 @@ F:\MicrosServicesContainer\MicroServiceFinance\account\src\main\java\com\mit\acc
 F:\MicrosServicesContainer\MicroServiceFinance\account\src\main\java\com\mit\account\dto\AccountDTO.java
 F:\MicrosServicesContainer\MicroServiceFinance\account\src\main\java\com\mit\account\model\AccountEntity.java
 F:\MicrosServicesContainer\MicroServiceFinance\account\src\main\java\com\mit\account\dto\RequestDTO.java
+F:\MicrosServicesContainer\MicroServiceFinance\account\src\main\java\com\mit\account\util\KafkaConsumerConfig.java
 F:\MicrosServicesContainer\MicroServiceFinance\account\src\main\java\com\mit\account\util\ErrorLogService.java
 F:\MicrosServicesContainer\MicroServiceFinance\account\src\main\java\com\mit\account\model\Util.java
 F:\MicrosServicesContainer\MicroServiceFinance\account\src\main\java\com\mit\account\service\AccountService.java

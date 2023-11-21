@@ -52,11 +52,11 @@ public class AccountTranscationService implements AccountTranscatioinServiceInte
 		entity.setContraDate(dateString);
 		if (status != requestDTO.getStatus()) {
 			entity.setTransType(820);
-			entity.setDescription("Deposit transcation" + requestDTO.getAccNumber());
+			entity.setDescription("Deposit transcation");
 
 		} else {
 			entity.setTransType(320);
-			entity.setDescription("Credit transcation" + requestDTO.getAccNumber());
+			entity.setDescription("Credit transcation");
 		}
 
 		entity.setEffectiveDate(dateString);
@@ -79,11 +79,11 @@ public class AccountTranscationService implements AccountTranscatioinServiceInte
 		entity.setTransTime(timeString);
 		entity.setWorkStation("Yangon");
 		try {
-		InfoLogService.log("Save Transcation"+entity);
+		InfoLogService.log("Save Transcation");
 		accountTranscationRepository.save(entity);
-		InfoLogService.log("After Save Transcation"+entity);
+		InfoLogService.log("After Save Transcation");
 		String statusTranscation = "Success";
-		kafkaProducer.sendAccount(statusTranscation);
+//		kafkaProducer.sendAccount(statusTranscation);
 		}
 		catch (Exception e) {
 			InfoLogService.log("Error Save"+e);

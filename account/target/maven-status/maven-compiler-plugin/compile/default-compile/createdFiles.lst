@@ -7,6 +7,7 @@ com\mit\account\model\AccountEntity.class
 com\mit\account\kafkaService\KafkaProducer.class
 com\mit\account\model\Util.class
 com\mit\account\AccountApplication.class
+com\mit\account\util\KafkaConsumerConfig.class
 com\mit\account\util\ErrorLogService.class
 com\mit\account\service\AccountService.class
 com\mit\account\util\FirebaseConfig.class

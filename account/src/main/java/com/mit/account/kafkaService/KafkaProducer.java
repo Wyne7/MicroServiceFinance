@@ -21,7 +21,7 @@ public class KafkaProducer {
     
     public void sendTranscSuccess(AccountDTO dto) {
   		try {
-			InfoLogService.log("Before Kafka");
+			InfoLogService.log("Before Kafka"+Thread.currentThread().getId());
   			String dtoJson = objectMapper.writeValueAsString(dto);
   			 kafkaTemplate.send("transcation-topic",dtoJson);  
   		} catch (JsonProcessingException e) {

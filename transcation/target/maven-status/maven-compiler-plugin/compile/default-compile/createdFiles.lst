@@ -2,6 +2,7 @@ com\mit\transcation\kafkaService\KafkaConsumer.class
 com\mit\transcation\model\AccountTransactionEntity.class
 com\mit\transcation\dto\AccountDTO.class
 com\mit\transcation\serviceInterface\AccountTranscatioinServiceInterface.class
+com\mit\transcation\util\KafkaConsumerConfig.class
 com\mit\transcation\repository\AccountTranscationRepository.class
 com\mit\transcation\dto\RequestDTO.class
 com\mit\transcation\util\ErrorLogService.class
