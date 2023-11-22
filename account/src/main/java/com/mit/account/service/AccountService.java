@@ -19,42 +19,27 @@ public class AccountService implements AccountServiceInterface {
 	private AccountRepository accountRepository;
 	@Autowired
 	private KafkaProducer kafkaProducer;
+	
 	@Override
-	public void saveAccount(RequestDTO requestDTO) {
-		Double currentAmount = accountRepository.findByAccountNumber(requestDTO.getAccountDTO().getAccNumber());
-
-	
-		if (requestDTO.getAccountDTO().getStatus() != 0) {
-			requestDTO.getAccountDTO().setAmount(currentAmount + requestDTO.getAccountDTO().getAmount());
-			accountUpdate(requestDTO);
-			
-		} else {
-			if (currentAmount != 0) {
-				requestDTO.getAccountDTO().setAmount(currentAmount - requestDTO.getAccountDTO().getAmount());
-				accountUpdate(requestDTO);
-				
-			}
-
-		}
-	
-
-	}
-
 	@Transactional
-	public void accountUpdate(RequestDTO requestDTO) {
-		AccountEntity entity = accountRepository.findByAccNumber(requestDTO.getAccountDTO().getAccNumber());
-		entity.setCurrentBalance(requestDTO.getAccountDTO().getAmount());
-		entity.setLastUpDate(requestDTO.getAccountDTO().getLastUpDate());
-		entity.setStatus(requestDTO.getAccountDTO().getStatus());
-		try {
-			InfoLogService.log("Before Save");
-			accountRepository.save(entity);
-			kafkaProducer.sendTranscSuccess(requestDTO.getAccountDTO());
-			InfoLogService.log("After Save");
-		} catch (Exception e) {
-			InfoLogService.log("Error Save"+e);
-		}
+	public void saveAccount(RequestDTO requestDTO) {
+		  try {
+		        InfoLogService.log("Before Save");
 
+		        if (requestDTO.getAccountDTO().getStatus() != 0) {
+		            // Batch update without retrieving the current balance first
+		            accountRepository.updateCurrentBalanceIncrement(requestDTO.getAccountDTO().getAmount(), requestDTO.getAccountDTO().getAccNumber());
+		        } else {
+		            // Batch update without retrieving the current balance first
+		            accountRepository.updateCurrentBalanceDecrement(requestDTO.getAccountDTO().getAmount(), requestDTO.getAccountDTO().getAccNumber());
+		        }
+
+		        kafkaProducer.sendTranscSuccess(requestDTO.getAccountDTO());
+
+		        InfoLogService.log("After Save");
+		    } catch (Exception e) {
+		        InfoLogService.log("Error Save" + e);
+		    }
 	}
 
 }

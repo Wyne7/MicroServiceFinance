@@ -15,9 +15,9 @@ public class KafkaConsumer {
 		this.kafkaTemplate = kafkaTemplate;
 	}
 
-	@KafkaListener(topics = "success_topic", groupId = "account")
-	public void consumeOrderEvent(String message) {
-		
-	}
+//	@KafkaListener(topics = "success_topic", groupId = "account")
+//	public void consumeOrderEvent(String message) {
+//		
+//	}
 
 }
