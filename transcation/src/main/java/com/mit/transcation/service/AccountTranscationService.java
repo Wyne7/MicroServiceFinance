@@ -46,10 +46,13 @@ public class AccountTranscationService implements AccountTranscatioinServiceInte
 
 		AccountTransactionEntity entity = new AccountTransactionEntity();
 		entity.setAccNumber(requestDTO.getAccNumber());
+		entity.setAccRef("Test");
 		entity.setAmount(requestDTO.getAmount());
 		entity.setBranchCode("001");
 		entity.setChequeNo("Y");
 		entity.setContraDate(dateString);
+		entity.setCurrencyCode("1");
+		entity.setCurrencyRate(0.00f);
 		if (status != requestDTO.getStatus()) {
 			entity.setTransType(820);
 			entity.setDescription("Deposit transcation");
@@ -60,19 +63,15 @@ public class AccountTranscationService implements AccountTranscatioinServiceInte
 		}
 
 		entity.setEffectiveDate(dateString);
-
-		entity.setCurrencyCode("1");
-		entity.setCurrencyRate(0.00f);
 		entity.setPrevBalance(0.00);
 		entity.setPrevUpDate(dateString);
 		entity.setRemark("Test");
+		entity.setSerialNo(0);	
 		entity.setStatus(0);
-		entity.setAccRef("Test");
-		entity.setSerialNo(0);
 		entity.setSubRef("Test");
 		entity.setSupervisorId("001");
-		entity.setSystemCode(0);
-		entity.setTellerId("001");
+		entity.setSystemCode(0); 
+		entity.setTellerId("001"); 	
 		entity.setTransDate(dateString);
 		entity.setTransNo(100);
 		entity.setTransRef(10);
@@ -80,7 +79,9 @@ public class AccountTranscationService implements AccountTranscatioinServiceInte
 		entity.setWorkStation("Yangon");
 		try {
 		InfoLogService.log("Save Transcation");
-		accountTranscationRepository.save(entity);
+//		accountTranscationRepository.save(entity);
+		accountTranscationRepository.insertAccountTransaction(entity);
+		//accountTranscationRepository.saveAccountTransaction(entity);
 		InfoLogService.log("After Save Transcation");
 		String statusTranscation = "Success";
 //		kafkaProducer.sendAccount(statusTranscation);

@@ -34,8 +34,6 @@ public class AccountService implements AccountServiceInterface {
 		            accountRepository.updateCurrentBalanceDecrement(requestDTO.getAccountDTO().getAmount(), requestDTO.getAccountDTO().getAccNumber());
 		        }
 
-		        kafkaProducer.sendTranscSuccess(requestDTO.getAccountDTO());
-
 		        InfoLogService.log("After Save");
 		    } catch (Exception e) {
 		        InfoLogService.log("Error Save" + e);
